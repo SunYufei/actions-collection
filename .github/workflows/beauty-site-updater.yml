@@ -1,7 +1,10 @@
 name: beauty-site-updater
 on:
-  schedule:
-    - cron: '0 */12 * * *'
+  push:
+    branches:
+      - dev
+  # schedule:
+  #   - cron: '0 */12 * * *'
 
 jobs:
   update-site:
