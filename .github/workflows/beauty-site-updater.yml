@@ -1,0 +1,36 @@
+name: beauty-site-updater
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Clone Codes
+        env:
+          REPO: ${{ secrets.CODING_REPO_PREFIX }}beauty/spider.git
+        run: git clone $REPO beauty
+      - name: Install Requirements
+        run: pip install requests
+      - name: Clone Site
+        env:
+          REPO: ${{ secrets.CODING_REPO_PREFIX }}beauty/site.git
+        run: git clone $REPO beauty/www
+      - name: Run Codes
+        run: |
+          cd beauty
+          python3 update.py
+          python3 down.py
+      - name: Push Site to Remote
+        run: |
+          cd beauty/www
+          git config --global user.name "SunYufei"
+          git config --global user.email "sunyufei963@gmail.com"
+          git add .
+          git commit -m "Pushed by GitHub Actions"
+          git push
