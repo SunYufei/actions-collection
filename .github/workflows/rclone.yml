@@ -1,0 +1,15 @@
+name: rclone
+on:
+  schedule:
+    - cron: '0 13 * * *'
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: rclone copy
+        uses: wei/rclone@v1
+        env:
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        with:
+          args: copy --update --verbose GoogleDrive:/Video OneDrive:/Video
