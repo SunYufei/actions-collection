@@ -1,7 +1,7 @@
 name: rclone
 on:
   push:
-    - branch: dev
+    - branch: some
 #  schedule:
 #    - cron: '0 13 * * *'
 
