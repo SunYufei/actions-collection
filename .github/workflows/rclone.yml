@@ -1,9 +1,9 @@
 name: rclone
 on:
-  push:
-    - branch: some
-#  schedule:
-#    - cron: '0 13 * * *'
+  # push:
+    # - branch: some
+  # schedule:
+  #   - cron: '0 13 * * *'
 
 jobs:
   copy:
