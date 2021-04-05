@@ -1,5 +1,6 @@
 name: JD-Sign
 on:
+  push:
   schedule:
     - cron: '5 16 * * *'
 
@@ -11,7 +12,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
-      - run: |
+      - name: run codes
+        run: |
           cd jd-sign
           npm install
           node app.js
