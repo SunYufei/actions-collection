@@ -17,5 +17,6 @@ jobs:
           cd jd-sign
           npm install
           node app.js
+          cat result.txt
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
