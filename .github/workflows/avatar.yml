@@ -2,7 +2,7 @@ name: avatar
 on:
   push:
     branches: 
-      - some
+      - master
 
 jobs:
   avatar:
