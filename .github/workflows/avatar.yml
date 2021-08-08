@@ -1,8 +1,7 @@
 name: avatar
 on:
-  push:
-    branches: 
-      - master
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   avatar:
@@ -12,10 +11,8 @@ jobs:
       - name: clone codes
         env:
           REPO_CODE: ${{ secrets.CODING_REPO_PREFIX }}/avatar/code.git
-          REPO_IMG: ${{ secrets.CODING_REPO_PREFIX }}/avatar/image.git
         run: |
           git clone $REPO_CODE
-          git clone $REPO_IMG
           cd code
           cat run.py
       - name: run codes
