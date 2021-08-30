@@ -1,7 +1,10 @@
 name: avatar
 on:
-  schedule:
-    - cron: '0 * * * *'
+  push:
+    branches:
+      - some
+  #schedule:
+    #- cron: '0 * * * *'
 
 jobs:
   avatar:
