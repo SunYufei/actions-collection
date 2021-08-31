@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - some
-  #schedule:
-    #- cron: '0 * * * *'
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   avatar:
