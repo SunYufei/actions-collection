@@ -1,7 +1,7 @@
 name: avatar-img
 on:
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 0 * * *'
 
 jobs:
   avatar:
@@ -17,10 +17,10 @@ jobs:
           git clone $REPO_IMG
           cd code
           cat down_from_db.py
-      # - name: run codes
-      #   run: |
-      #     cd code
-      #     python3 down_from_db.py
+      - name: run codes
+        run: |
+          cd code
+          python3 down_from_db.py
       - name: push
         env:
           REPO_IMG: ${{ secrets.CODING_REPO_PREFIX }}/avatar/image.git
