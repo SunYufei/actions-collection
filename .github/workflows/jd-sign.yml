@@ -1,6 +1,5 @@
 name: JD-Sign
 on:
-  push:
   schedule:
     - cron: '5 16 * * *'
 
