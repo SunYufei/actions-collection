@@ -23,10 +23,15 @@ jobs:
           cd code
           python3 run.py
       - name: push
+        env:
+          REPO_CODE: ${{ secrets.CODING_REPO_PREFIX }}/avatar/code.git
         run: |
           git config --global user.name "SunYufei"
           git config --global user.email "sunyufei963@qq.com"
           cd code
+          rm -rf .git/
+          git init
+          git remote add origin $REPO_CODE
           git add .
           git commit -m "Pushed by GitHub Actions"
-          git push
+          git push -u origin master -f
