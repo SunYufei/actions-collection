@@ -17,6 +17,7 @@ jobs:
         run: |
           git clone $REPO_CODE
           cd code
+          cat config.json
           cat run.py
       - name: run codes
         run: |
