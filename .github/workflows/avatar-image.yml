@@ -1,7 +1,7 @@
 name: avatar-img
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 */3 * * *'
 
 jobs:
   avatar:
@@ -10,11 +10,15 @@ jobs:
     steps:
       - name: clone codes
         env:
-          REPO_CODE: ${{ secrets.CODING_REPO_PREFIX }}/avatar/code.git
-          REPO_IMG: ${{ secrets.CODING_REPO_PREFIX }}/avatar/image.git
+          CODE: ${{ secrets.CODING_REPO_PREFIX }}/avatar/code.git
+          BACHELOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-bachelor.git
+          MASTER: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-master.git
+          DOCTOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-doctor.git
         run: |
-          git clone $REPO_CODE
-          git clone $REPO_IMG
+          git clone $CODE
+          git clone $BACHELOR
+          git clone $MASTER
+          git clone $DOCTOR
           cd code
           cat down_from_db.py
       - name: run codes
@@ -23,11 +27,27 @@ jobs:
           python3 down_from_db.py
       - name: push
         env:
-          REPO_IMG: ${{ secrets.CODING_REPO_PREFIX }}/avatar/image.git
+          BACHELOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-bachelor.git
+          MASTER: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-master.git
+          DOCTOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-doctor.git
         run: |
           git config --global user.name "SunYufei"
           git config --global user.email "sunyufei963@qq.com"
-          cd image
+          cd img-bachelor
+          rm -rf .git/
+          git init
+          git remote add origin $REPO_IMG
+          git add .
+          git commit -m "Pushed by GitHub Actions"
+          git push -u origin master -f
+          cd ../img-master
+          rm -rf .git/
+          git init
+          git remote add origin $REPO_IMG
+          git add .
+          git commit -m "Pushed by GitHub Actions"
+          git push -u origin master -f
+          cd ../img-doctor
           rm -rf .git/
           git init
           git remote add origin $REPO_IMG
