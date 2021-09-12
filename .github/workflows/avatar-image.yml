@@ -11,9 +11,9 @@ jobs:
       - name: clone codes
         env:
           CODE: ${{ secrets.CODING_REPO_PREFIX }}/avatar/code.git
-          BACHELOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-bachelor.git
-          MASTER: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-master.git
-          DOCTOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-doctor.git
+          BACHELOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/bachelor.git
+          MASTER: ${{ secrets.CODING_REPO_PREFIX }}/avatar/master.git
+          DOCTOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/doctor.git
         run: |
           git clone $CODE
           git clone $BACHELOR
@@ -27,27 +27,27 @@ jobs:
           python3 down_from_db.py
       - name: push
         env:
-          BACHELOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-bachelor.git
-          MASTER: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-master.git
-          DOCTOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/img-doctor.git
+          BACHELOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/bachelor.git
+          MASTER: ${{ secrets.CODING_REPO_PREFIX }}/avatar/master.git
+          DOCTOR: ${{ secrets.CODING_REPO_PREFIX }}/avatar/doctor.git
         run: |
           git config --global user.name "SunYufei"
           git config --global user.email "sunyufei963@qq.com"
-          cd img-bachelor
+          cd bachelor
           rm -rf .git/
           git init
           git remote add origin $REPO_IMG
           git add .
           git commit -m "Pushed by GitHub Actions"
           git push -u origin master -f
-          cd ../img-master
+          cd ../master
           rm -rf .git/
           git init
           git remote add origin $REPO_IMG
           git add .
           git commit -m "Pushed by GitHub Actions"
           git push -u origin master -f
-          cd ../img-doctor
+          cd ../doctor
           rm -rf .git/
           git init
           git remote add origin $REPO_IMG
