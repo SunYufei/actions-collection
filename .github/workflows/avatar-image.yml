@@ -36,21 +36,21 @@ jobs:
           cd bachelor
           rm -rf .git/
           git init
-          git remote add origin $REPO_IMG
+          git remote add origin $BACHELOR
           git add .
           git commit -m "Pushed by GitHub Actions"
           git push -u origin master -f
           cd ../master
           rm -rf .git/
           git init
-          git remote add origin $REPO_IMG
+          git remote add origin $MASTER
           git add .
           git commit -m "Pushed by GitHub Actions"
           git push -u origin master -f
           cd ../doctor
           rm -rf .git/
           git init
-          git remote add origin $REPO_IMG
+          git remote add origin $DOCTOR
           git add .
           git commit -m "Pushed by GitHub Actions"
           git push -u origin master -f
