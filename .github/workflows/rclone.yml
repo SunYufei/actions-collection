@@ -3,17 +3,17 @@ on:
   push:
     branches: 
       - master
-  # schedule:
-  #   - cron: '0 13 * * *'
 
 jobs:
   copy:
     runs-on: ubuntu-latest
     steps:
-      - name: rclone copy
-        uses: wei/rclone@v1
-        env:
-          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+      - uses: NiceLabs/rclone-action@master
         with:
           # args: copy --update --verbose GoogleDrive:/Video OneDrive:/
-          args: ls OneDrive:/
+          config: ${{ secrets.RCLONE_CONF }}
+      - name: rclone move
+        run: |
+          rclone ls OneDrive:/
+          rclone ls GoogleDrive:/
+          rclone ls GoogleTeamDrive:/
