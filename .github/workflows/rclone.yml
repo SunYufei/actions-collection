@@ -14,4 +14,4 @@ jobs:
           config: ${{ secrets.RCLONE_CONF }}
       - name: rclone move
         run: |
-          rclone rclone move --delete-empty-src-dirs -v GoogleDrive:/ OneDrive:/Videos/
+          rclone move --delete-empty-src-dirs -v GoogleDrive:/ OneDrive:/Videos/
