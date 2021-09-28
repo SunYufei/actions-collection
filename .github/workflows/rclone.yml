@@ -14,6 +14,5 @@ jobs:
           config: ${{ secrets.RCLONE_CONF }}
       - name: rclone move
         run: |
-          rclone ls OneDrive:/
-          rclone ls GoogleDrive:/
-          rclone ls GoogleTeamDrive:/
+          rclone sync -v GoogleDrive:/ OneDrive:/
+          rclone rmdirs --leave-root GoogleDrive:/
