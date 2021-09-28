@@ -16,4 +16,4 @@ jobs:
           RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
         with:
           # args: copy --update --verbose GoogleDrive:/Video OneDrive:/
-          args: ls GoogleDrive:/
+          args: ls OneDrive:/
