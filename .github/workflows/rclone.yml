@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  copy:
+  transfer:
     runs-on: ubuntu-latest
     steps:
       - uses: NiceLabs/rclone-action@master
