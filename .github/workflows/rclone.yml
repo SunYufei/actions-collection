@@ -1,7 +1,7 @@
 name: rclone
 on:
-  # push:
-    # - branch: some
+  push:
+    - branch: master
   # schedule:
   #   - cron: '0 13 * * *'
 
@@ -14,4 +14,5 @@ jobs:
         env:
           RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
         with:
-          args: copy --update --verbose GoogleDrive:/Video OneDrive:/
+          # args: copy --update --verbose GoogleDrive:/Video OneDrive:/
+          args: list GoogleDrive:/
