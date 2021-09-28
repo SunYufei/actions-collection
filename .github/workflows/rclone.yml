@@ -15,4 +15,3 @@ jobs:
       - name: rclone move
         run: |
           rclone move --delete-empty-src-dirs GoogleDrive:/ OneDrive:/Videos/
-          rclone move GoogleTeamDrive:/ GoogleDrive:/
