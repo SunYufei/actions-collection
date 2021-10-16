@@ -17,5 +17,6 @@ jobs:
           npm install
           node app.js
           cat result.txt
+          python3 mail.py ${{ secrets.JD_MAIL_ARGS }}
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
