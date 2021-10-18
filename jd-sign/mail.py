@@ -13,7 +13,6 @@ parser.add_argument('-u', '--username')
 parser.add_argument('-p', '--password')
 
 args = parser.parse_args()
-print(args)
 
 file = Path(args.file)
 sender = args.sender
