@@ -26,7 +26,7 @@ need_send = False
 with file.open() as f:
     lines = f.readlines()
     for line in lines:
-        if 'Cookie' in line:
+        if 'Cookie失效' in line:
             need_send = True
 
 if need_send:
