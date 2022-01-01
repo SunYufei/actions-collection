@@ -1,10 +1,7 @@
 name: avatar
 on:
-  push:
-    branches:
-      - some
-#   schedule:
-#     - cron: '0 * * * *'
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   avatar:
@@ -30,9 +27,6 @@ jobs:
           git config --global user.name "SunYufei"
           git config --global user.email "sunyufei963@qq.com"
           cd code
-          rm -rf .git/
-          git init
-          git remote add origin $REPO_CODE
           git add .
-          git commit -m "Pushed by GitHub Actions"
-          git push -u origin master -f
+          git commit -m "Pushed by GitHub Actions" || exit 0
+          git push origin master
