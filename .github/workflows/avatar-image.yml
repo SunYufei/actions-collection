@@ -1,10 +1,7 @@
 name: avatar-img
 on:
-  push:
-    branches:
-      - some
-  #schedule:
-  #  - cron: '0 */3 * * *'
+  schedule:
+    - cron: '0 */3 * * *'
 
 jobs:
   avatar:
