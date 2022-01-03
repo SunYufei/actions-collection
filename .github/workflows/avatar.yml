@@ -29,4 +29,4 @@ jobs:
           cd code
           git add .
           git commit -m "Pushed by GitHub Actions" || exit 0
-          git push origin master
+          git push origin master || exit 0
