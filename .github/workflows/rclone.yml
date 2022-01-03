@@ -2,7 +2,7 @@ name: rclone
 on:
   push:
     branches: 
-      - master
+      - some
 
 jobs:
   transfer:
